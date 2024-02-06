@@ -28,14 +28,38 @@ Route::get('/22', function () {
 
 Route::get('/23', function () {
     $a = new \App\Models\MyModel();
-    $b = $a::all();
+    $b = $a::where('id', '>', 10)->where('id', '<', 13)->get();
 
     foreach ($b as $key) {
-        var_dump($key->id);
+        var_dump($key->MyTime);
     }
 
+});
 
 
+Route::get('/set_data/{text}/{int}', function ($text, $int) {
+   $a = new App\Models\MyModel();
+
+    $c = $a->where('MyInt', $int)->get();
+    if(count($c)) {
+        echo 'die';
+        die();
+    };
+
+
+
+   echo $a->insert([
+      'myText' => $text,
+      'MyInt' => $int
+   ]);
+
+   echo '<br>';
+
+   $b = $a->where('myText', $text)->where('MyInt', $int)->get();
+
+   foreach ($b as $value) {
+       var_dump($value->id);
+   }
 
 });
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('myText')->nullable();
             $table->string('MyTime')->nullable();
-            $table->integer('MyInt')->nullable();
+            $table->integer('MyInt')->nullable()->unique();
         });
     }
 
