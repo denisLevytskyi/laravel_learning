@@ -28,4 +28,23 @@ use Illuminate\Database\Eloquent\Model;
 class MyModel extends Model
 {
     use HasFactory;
+
+    public function get_user_role() {
+        return $this->belongsToMany(
+            MyModel3::class,
+            'my_model2s',
+            'user_id',
+            'user_role',
+            'id',
+            'id'
+        );
+
+    }
+
+    public function get_user_role_id () {
+        return $this->hasOne(
+            MyModel2::class,
+            'user_id'
+        );
+    }
 }

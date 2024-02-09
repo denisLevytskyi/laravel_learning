@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,24 @@ Route::get('/set_data/{text}/{int}', function ($text, $int) {
    foreach ($b as $value) {
        var_dump($value->id);
    }
+
+});
+
+Route::any('/test', function (Request $request) {
+    $model = new Models\MyModel();
+
+    $result = $model->find(1);
+
+
+
+
+
+   foreach ($result->get_user_role as $v) {
+       var_dump( $v->role_name);
+   };
+
+//    dd($result->get_user_role_id->user_role);
+
 
 });
 

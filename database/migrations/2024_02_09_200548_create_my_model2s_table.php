@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('my_models', function (Blueprint $table) {
+        Schema::create('my_model2s', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_role')->unsigned()->default(2);
+
+            $table->foreign('user_id')->references('id')->on('my_models')->onUpdate('cascade');
+            $table->foreign('user_role')->references('id')->on('my_model3s')->onUpdate('cascade');
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('my_models');
+        Schema::dropIfExists('my_model2s');
     }
 };

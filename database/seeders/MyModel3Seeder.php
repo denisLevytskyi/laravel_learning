@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class MyModelsTableSeeder extends Seeder
+class MyModel3Seeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,15 +15,13 @@ class MyModelsTableSeeder extends Seeder
      */
     public function run()
     {
-        $data = [];
+        $list = [
+            0 => ['role_name' => 'user'],
+            1 => ['role_name' => 'admin']
+        ];
 
-        for ($i = 1; $i<100; $i++) {
-            $list = [
-                'name' => 'andre' . $i
-            ];
 
-            $data[] = $list;
-        }
-        DB::table('my_models')->insert($data);
+        DB::table('my_model3s')->insert($list);
+
     }
 }
