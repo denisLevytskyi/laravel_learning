@@ -82,6 +82,8 @@ Route::any('/test', function (Request $request) {
 
 });
 
+Route::get('/midl/{var}', [\App\Http\Controllers\MyTest::class, 'test']);
+
 
 
 
